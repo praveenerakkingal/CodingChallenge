@@ -1,0 +1,56 @@
+using System;
+public class GFG {
+	static public void Main () {
+		//Console.WriteLine("Hello World!");
+		int T = Convert.ToInt32(Console.ReadLine());
+		for(int i=0;i<T;i++)
+		{
+		    string val = Console.ReadLine();
+		    //Console.Write(val);
+		    int N = Convert.ToInt32(val.Split()[0].Trim());
+		    int S = Convert.ToInt32(val.Split()[1].Trim());
+		    int[] num=Array.ConvertAll(Console.ReadLine().Trim().Split(),int.Parse);
+		    int sum = 0;
+		    int startIndex =0;
+		    int endIndex=0;
+		    bool resultFound = false;
+		    for(int j=0;j<N;j++)
+		    {
+		        
+		        if(sum ==S)
+		        {
+		            break;
+		        }
+		        sum = sum+num[j];
+		        endIndex++;
+		        if(sum > S)
+		        {
+		            while(sum > S)
+		            {
+		                if(startIndex!=endIndex)
+		                {
+		                    sum= sum- num[startIndex];
+		                    startIndex++;
+		                    //Console.WriteLine(sum + "re");
+		                }
+		                else
+		                {
+		                    sum=num[startIndex];
+		                   //sum=0;
+		                   Console.WriteLine("here");
+		                    break;
+		                }
+		            }
+		        }
+		        
+		    }
+		    if(sum !=S)
+		        Console.WriteLine(-1);
+		    else
+		        Console.WriteLine((startIndex+1)+ " "+ (endIndex));
+		    //Console.WriteLine();
+		}
+	}
+	
+
+}
